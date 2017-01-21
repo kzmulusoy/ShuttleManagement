@@ -1,6 +1,5 @@
 package com.shuttlemanagement.domain;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -10,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Shuttle {
 	 
 	/** The id. */
-	@Id
 	private String id;
 	
 	/** The location. */
@@ -154,6 +152,12 @@ public class Shuttle {
 	public void setWorkingHour(String workingHour) {
 		this.workingHour = workingHour;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Shuttle [id=" + id + ", location=" + location + ", operationMode=" + operationMode + ", shuttleNumber="
+				+ shuttleNumber + ", shuttleName=" + shuttleName + ", routeDescription=" + routeDescription
+				+ ", driverFullName=" + driverFullName + ", driverPhone=" + driverPhone + ", vehiclePlate="
+				+ vehiclePlate + ", seatingCapacity=" + seatingCapacity + ", workingHour=" + workingHour + "]";
+	}
 }

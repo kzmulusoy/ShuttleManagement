@@ -8,9 +8,6 @@ public class SearchDto {
 	/** The location. */
 	private String location;
 	
-	/** The opetation mode. */
-	private String opetationMode;
-	
 	/** The destination. */
 	private String destination;
 	
@@ -19,6 +16,18 @@ public class SearchDto {
 	 */
 	public SearchDto() {
 		super();
+	}
+	
+	/**
+	 * Instantiates a new search dto.
+	 *
+	 * @param location the location
+	 * @param destination the destination
+	 */
+	public SearchDto(String location, String destination) {
+		super();
+		this.location = location;
+		this.destination = destination;
 	}
 
 	/**
@@ -37,24 +46,6 @@ public class SearchDto {
 	 */
 	public void setLocation(String location) {
 		this.location = location;
-	}
-
-	/**
-	 * Gets the opetation mode.
-	 *
-	 * @return the opetation mode
-	 */
-	public String getOpetationMode() {
-		return opetationMode;
-	}
-
-	/**
-	 * Sets the opetation mode.
-	 *
-	 * @param opetationMode the new opetation mode
-	 */
-	public void setOpetationMode(String opetationMode) {
-		this.opetationMode = opetationMode;
 	}
 
 	/**
