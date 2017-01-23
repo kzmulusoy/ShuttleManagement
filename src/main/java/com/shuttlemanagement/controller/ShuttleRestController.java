@@ -42,14 +42,14 @@ public class ShuttleRestController {
 		return this.shuttleRepository.save(shuttle);
 	}
 
-	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/getall", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
 	public List<Shuttle> getAll() {
 		return (List<Shuttle>) this.shuttleRepository.findAll();
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/removeall", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteAll() {

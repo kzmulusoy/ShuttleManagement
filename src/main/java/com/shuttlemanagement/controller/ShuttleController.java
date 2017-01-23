@@ -20,17 +20,17 @@ public class ShuttleController {
 	@Autowired
 	ShuttleSearchRepository shuttleSearchRepository;
 	
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = {"/home", "/"})
     public String home(Model model) {
-        return "index";
+        return "home";
     }
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute SearchDto searchDto, Model model) {
         model.addAttribute("shuttleList", shuttleSearchRepository.searchShuttles(searchDto));
-        System.out.println(searchDto.getDestination() + searchDto.getLocation());
+        System.out.println(searchDto.getDestination() + searchDto.getLocation() + searchDto.getStyle());
         
-        return "index";
+        return "home";
     }
 
 }
