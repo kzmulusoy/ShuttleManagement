@@ -1,9 +1,9 @@
 package com.shuttlemanagement.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.shuttlemanagement.domain.Shuttle;
 
-public interface ShuttleRepository extends CrudRepository<Shuttle, Long>{
+public interface ShuttleRepository extends MongoRepository<Shuttle, Long>{
 
 }

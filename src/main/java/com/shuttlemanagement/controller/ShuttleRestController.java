@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shuttlemanagement.WebApiConstant;
 import com.shuttlemanagement.domain.Shuttle;
 import com.shuttlemanagement.dto.SearchDto;
 import com.shuttlemanagement.repository.ShuttleRepository;
 import com.shuttlemanagement.repository.ShuttleSearchRepository;
 
 @RestController
+@RequestMapping(WebApiConstant.RESOURCE_URL + "/shuttle")
 public class ShuttleRestController {
 
 	@Autowired
