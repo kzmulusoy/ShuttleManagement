@@ -32,14 +32,14 @@
 				</div>
 			<div class="panel-body">
 				<form action="/search" method="POST">
-					<select name="style">
+					<select name="location" class="selectpicker show-menu-arrow">
+						<option th:value="KARTAL">KARTAL</option>
+						<option th:value="GEBZE">GEBZE</option>
+					</select>
+					<select name="oprmode" class="selectpicker show-menu-arrow">
 						<option th:value="NORMAL">NORMAL</option>
 						<option th:value="SHUTTLE">SHUTTLE</option>
 						<option th:value="SHIFT">SHIFT</option>
-					</select> 
-					<select name="location">
-						<option th:value="KARTAL">KARTAL</option>
-						<option th:value="GEBZE">GEBZE</option>
 					</select>
 					<div class="input-group">
 						<input type="text" name="destination" class="form-control" placeholder="Destination or Location" />

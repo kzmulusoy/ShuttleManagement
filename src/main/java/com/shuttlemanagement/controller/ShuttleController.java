@@ -28,7 +28,7 @@ public class ShuttleController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute SearchDto searchDto, Model model) {
         model.addAttribute("shuttleList", shuttleSearchRepository.searchShuttles(searchDto));
-        System.out.println(searchDto.getDestination() + searchDto.getLocation() + searchDto.getStyle());
+        System.out.println(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
         
         return "home";
     }

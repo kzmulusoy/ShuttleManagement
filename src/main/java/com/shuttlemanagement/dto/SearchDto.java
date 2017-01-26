@@ -11,7 +11,7 @@ public class SearchDto {
 	/** The destination. */
 	private String destination;
 	
-	private String style;
+	private String oprmode;
 	
 	/**
 	 * Instantiates a new search dto.
@@ -26,11 +26,11 @@ public class SearchDto {
 	 * @param location the location
 	 * @param destination the destination
 	 */
-	public SearchDto(String location, String destination, String style) {
+	public SearchDto(String location, String destination, String oprmode) {
 		super();
 		this.location = location;
 		this.destination = destination;
-		this.style = style;
+		this.oprmode = oprmode;
 	}
 
 	/**
@@ -69,12 +69,12 @@ public class SearchDto {
 		this.destination = destination;
 	}
 
-	public String getStyle() {
-		return style;
+	public String getOprmode() {
+		return oprmode;
 	}
 
-	public void setStyle(String style) {
-		this.style = style;
+	public void setOprmode(String oprmode) {
+		this.oprmode = oprmode;
 	}
 	
 	

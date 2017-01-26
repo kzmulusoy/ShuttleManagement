@@ -20,7 +20,7 @@ public class ShuttleSearchRepository {
 	public Collection<Shuttle> searchShuttles(SearchDto searchDto) {
 		return (Collection<Shuttle>) mongoTemplate.find(Query.query(new Criteria().andOperator(
 				Criteria.where("location").regex(searchDto.getLocation(), "i"),
-				Criteria.where("operationMode").regex(searchDto.getStyle(), "i"),
+				Criteria.where("operationMode").regex(searchDto.getOprmode(), "i"),
 				Criteria.where("routeDescription").regex(searchDto.getDestination(), "i"))), Shuttle.class);
 	}
 }

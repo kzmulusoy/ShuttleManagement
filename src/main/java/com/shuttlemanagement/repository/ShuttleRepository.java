@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.shuttlemanagement.domain.Shuttle;
 
-public interface ShuttleRepository extends MongoRepository<Shuttle, Long>{
-
+public interface ShuttleRepository extends MongoRepository<Shuttle, String>{
+	
 }
