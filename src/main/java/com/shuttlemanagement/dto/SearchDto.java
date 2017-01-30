@@ -2,6 +2,7 @@ package com.shuttlemanagement.dto;
 
 /**
  * The Class SearchDto.
+ * @author Kazim Ulusoy
  */
 public class SearchDto {
 	
@@ -11,6 +12,7 @@ public class SearchDto {
 	/** The destination. */
 	private String destination;
 	
+	/** The oprmode. */
 	private String oprmode;
 	
 	/**
@@ -25,6 +27,7 @@ public class SearchDto {
 	 *
 	 * @param location the location
 	 * @param destination the destination
+	 * @param oprmode the oprmode
 	 */
 	public SearchDto(String location, String destination, String oprmode) {
 		super();
@@ -69,10 +72,20 @@ public class SearchDto {
 		this.destination = destination;
 	}
 
+	/**
+	 * Gets the oprmode.
+	 *
+	 * @return the oprmode
+	 */
 	public String getOprmode() {
 		return oprmode;
 	}
 
+	/**
+	 * Sets the oprmode.
+	 *
+	 * @param oprmode the new oprmode
+	 */
 	public void setOprmode(String oprmode) {
 		this.oprmode = oprmode;
 	}

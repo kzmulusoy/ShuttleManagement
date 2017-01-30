@@ -2,7 +2,7 @@ package com.shuttlemanagement;
 
 /**
  * 
- * @author Kazim ULUSOY
+ * @author Kazim Ulusoy
  *
  */
 public class WebApiConstant {

@@ -11,20 +11,39 @@ import com.shuttlemanagement.dto.SearchDto;
 import com.shuttlemanagement.repository.ShuttleRepository;
 import com.shuttlemanagement.repository.ShuttleSearchRepository;
 
+/**
+ * The Class ShuttleController.
+ * @author Kazim Ulusoy
+ */
 @Controller
 public class ShuttleController {
 	
+	/** The shuttle repository. */
 	@Autowired
 	ShuttleRepository shuttleRepository;
 
+	/** The shuttle search repository. */
 	@Autowired
 	ShuttleSearchRepository shuttleSearchRepository;
 	
+	/**
+	 * Home.
+	 *
+	 * @param model the model
+	 * @return the string
+	 */
 	@RequestMapping(value = {"/home", "/"})
     public String home(Model model) {
         return "home";
     }
 	
+	/**
+	 * Search.
+	 *
+	 * @param searchDto the search dto
+	 * @param model the model
+	 * @return the string
+	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute SearchDto searchDto, Model model) {
         model.addAttribute("shuttleList", shuttleSearchRepository.searchShuttles(searchDto));

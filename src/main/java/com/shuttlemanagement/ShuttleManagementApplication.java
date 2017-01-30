@@ -9,6 +9,7 @@ import com.shuttlemanagement.configuration.WebConfiguration;
 
 /**
  * The Class ShuttleManagementApplication.
+ * @author Kazim Ulusoy
  */
 @Import({ SwaggerConfiguration.class, WebConfiguration.class})
 @SpringBootApplication

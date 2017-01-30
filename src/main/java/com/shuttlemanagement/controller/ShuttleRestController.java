@@ -20,16 +20,28 @@ import com.shuttlemanagement.dto.SearchDto;
 import com.shuttlemanagement.repository.ShuttleRepository;
 import com.shuttlemanagement.repository.ShuttleSearchRepository;
 
+/**
+ * The Class ShuttleRestController.
+ * @author Kazim Ulusoy
+ */
 @RestController
 @RequestMapping(WebApiConstant.RESOURCE_URL + "/shuttle")
 public class ShuttleRestController {
 
+	/** The shuttle repository. */
 	@Autowired
 	ShuttleRepository shuttleRepository;
 
+	/** The shuttle search repository. */
 	@Autowired
 	ShuttleSearchRepository shuttleSearchRepository;
 
+	/**
+	 * Search.
+	 *
+	 * @param searchDto the search dto
+	 * @return the collection
+	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
@@ -38,6 +50,12 @@ public class ShuttleRestController {
 		return this.shuttleSearchRepository.searchShuttles(requestDto);
 	}
 
+	/**
+	 * Search.
+	 *
+	 * @param shuttle the shuttle
+	 * @return the shuttle
+	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
@@ -45,6 +63,11 @@ public class ShuttleRestController {
 		return this.shuttleRepository.save(shuttle);
 	}
 
+	/**
+	 * Gets the all.
+	 *
+	 * @return the all
+	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
@@ -52,6 +75,9 @@ public class ShuttleRestController {
 		return (List<Shuttle>) this.shuttleRepository.findAll();
 	}
 
+	/**
+	 * Delete all.
+	 */
 	@RequestMapping(value = "/removeall", method = RequestMethod.DELETE)
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
@@ -59,6 +85,11 @@ public class ShuttleRestController {
 		this.shuttleRepository.deleteAll();
 	}
 	
+	/**
+	 * Delete by ID.
+	 *
+	 * @param id the id
+	 */
 	@RequestMapping(value = "/remove", method = RequestMethod.DELETE)
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)

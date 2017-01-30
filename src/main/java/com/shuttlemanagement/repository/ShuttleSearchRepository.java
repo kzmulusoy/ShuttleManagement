@@ -11,12 +11,23 @@ import org.springframework.stereotype.Repository;
 import com.shuttlemanagement.domain.Shuttle;
 import com.shuttlemanagement.dto.SearchDto;
 
+/**
+ * The Class ShuttleSearchRepository.
+ * @author Kazim Ulusoy
+ */
 @Repository
 public class ShuttleSearchRepository {
 	
+	/** The mongo template. */
 	@Autowired
 	MongoTemplate mongoTemplate;
 	
+	/**
+	 * Search shuttles.
+	 *
+	 * @param searchDto the search dto
+	 * @return the collection
+	 */
 	public Collection<Shuttle> searchShuttles(SearchDto searchDto) {
 		return (Collection<Shuttle>) mongoTemplate.find(Query.query(new Criteria().andOperator(
 				Criteria.where("location").regex(searchDto.getLocation(), "i"),

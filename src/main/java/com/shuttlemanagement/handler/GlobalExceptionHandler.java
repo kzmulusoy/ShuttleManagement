@@ -16,6 +16,7 @@ import com.mongodb.MongoSocketOpenException;
 
 /**
  * The Class GlobalExceptionHandler.
+ * @author Kazim Ulusoy
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
