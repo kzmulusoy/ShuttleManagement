@@ -3,16 +3,19 @@ package com.shuttlemanagement.handler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.ConnectException;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.data.mongodb.UncategorizedMongoDbException;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.mongodb.MongoSocketOpenException;
+import com.mongodb.MongoTimeoutException;
 
 /**
  * The Class GlobalExceptionHandler.
@@ -39,28 +42,23 @@ public class GlobalExceptionHandler {
         handleRequest(response, exception, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
     }
     
-    /**
-     * Handle mongo socket open exception.
-     *
-     * @param response the response
-     * @param exception the exception
-     */
-    @ExceptionHandler(MongoSocketOpenException.class)
-    public void handleMongoSocketOpenException(HttpServletResponse response, Exception exception) {
-        handleRequest(response, exception, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-    }
-    
-    
-    /**
-     * Handle data access resource failure exception.
-     *
-     * @param response the response
-     * @param exception the exception
-     */
-    @ExceptionHandler(DataAccessResourceFailureException.class)
-    public void handleDataAccessResourceFailureException(HttpServletResponse response, Exception exception) {
-        handleRequest(response, exception, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-    }
+	/**
+	 * Handle database exception.
+	 *
+	 * @param response
+	 *            the response
+	 * @param exception
+	 *            the exception
+	 * @return the string
+	 */
+	@ExceptionHandler({ DataAccessResourceFailureException.class, 
+						ConnectException.class, 
+						MongoSocketOpenException.class, 
+						UncategorizedMongoDbException.class,
+						MongoTimeoutException.class })
+	public String handleDatabaseException(HttpServletResponse response, Exception exception) {
+		return "500";
+	}
     
     /**
      * Handle http message not readable exception.
