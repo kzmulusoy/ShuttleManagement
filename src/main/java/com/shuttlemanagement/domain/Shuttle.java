@@ -1,5 +1,7 @@
 package com.shuttlemanagement.domain;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,8 +10,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Kazim Ulusoy
  */
 @Document(collection = "shuttles")
-public class Shuttle {
-	 
+public class Shuttle implements Serializable{
+	
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+	
 	/** The id. */
 	@Id
 	private String id;

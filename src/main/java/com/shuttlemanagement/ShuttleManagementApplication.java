@@ -2,16 +2,13 @@ package com.shuttlemanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
-
-import com.shuttlemanagement.configuration.SwaggerConfiguration;
-import com.shuttlemanagement.configuration.WebConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * The Class ShuttleManagementApplication.
  * @author Kazim Ulusoy
  */
-@Import({ SwaggerConfiguration.class, WebConfiguration.class})
+@ComponentScan(basePackages="com.shuttlemanagement")
 @SpringBootApplication
 public class ShuttleManagementApplication {
 
