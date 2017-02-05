@@ -1,5 +1,7 @@
 package com.shuttlemanagement.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ public class ShuttleController {
 	@Autowired
 	ShuttleSearchRepository shuttleSearchRepository;
 	
+	/** The Constant LOG. */
+	private static final Logger LOG = LoggerFactory.getLogger(ShuttleController.class);
+	
 	/**
 	 * Home.
 	 *
@@ -47,7 +52,7 @@ public class ShuttleController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute SearchDto searchDto, Model model) {
         model.addAttribute("shuttleList", shuttleSearchRepository.searchShuttles(searchDto));
-        System.out.println(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
+        LOG.info(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
         
         return "home";
     }
