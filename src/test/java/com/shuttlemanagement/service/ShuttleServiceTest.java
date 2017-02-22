@@ -10,16 +10,28 @@ import org.mockito.MockitoAnnotations;
 
 import com.shuttlemanagement.domain.Shuttle;
 
+/**
+ * The Class ShuttleServiceTest.
+ * 
+ * @author Kazim Ulusoy
+ */
 public class ShuttleServiceTest {
 
+	/** The shuttle service. */
 	@Mock
 	private ShuttleService shuttleService;
 
+	/**
+	 * Setup.
+	 */
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
 
+	/**
+	 * Test save.
+	 */
 	@Test
 	public void testSave() {
 		Shuttle shuttle = new Shuttle("A", "B", "C", "D", "E", "F", "G", "H", "I", "J");
@@ -34,6 +46,9 @@ public class ShuttleServiceTest {
 		assertNotNull(shuttleSaved);
 	}
 
+	/**
+	 * Test save exception.
+	 */
 	@Test()
 	public void testSaveException() {
 		// Execute the method being tested
