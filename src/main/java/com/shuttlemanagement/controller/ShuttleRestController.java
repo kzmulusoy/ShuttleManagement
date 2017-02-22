@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shuttlemanagement.WebApiConstant;
 import com.shuttlemanagement.domain.Shuttle;
 import com.shuttlemanagement.dto.SearchDto;
-import com.shuttlemanagement.repository.ShuttleRepository;
-import com.shuttlemanagement.repository.ShuttleSearchRepository;
+import com.shuttlemanagement.service.ShuttleService;
 
 /**
  * The Class ShuttleRestController.
@@ -30,13 +29,9 @@ import com.shuttlemanagement.repository.ShuttleSearchRepository;
 @RequestMapping(WebApiConstant.RESOURCE_URL + "/shuttle")
 public class ShuttleRestController {
 
-	/** The shuttle repository. */
+	/** The shuttle service. */
 	@Autowired
-	ShuttleRepository shuttleRepository;
-
-	/** The shuttle search repository. */
-	@Autowired
-	ShuttleSearchRepository shuttleSearchRepository;
+	ShuttleService shuttleService;
 
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleRestController.class);
@@ -51,7 +46,7 @@ public class ShuttleRestController {
 	@ResponseStatus(HttpStatus.OK)
 	public Collection<Shuttle> search(@RequestBody SearchDto searchDto) {
 		SearchDto requestDto = searchDto;
-		return this.shuttleSearchRepository.searchShuttles(requestDto);
+		return this.shuttleService.searchShuttles(requestDto);
 	}
 
 	/**
@@ -64,7 +59,7 @@ public class ShuttleRestController {
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
 	public Shuttle search(@RequestBody Shuttle shuttle) {
-		return this.shuttleRepository.save(shuttle);
+		return this.shuttleService.save(shuttle);
 	}
 
 	/**
@@ -76,7 +71,7 @@ public class ShuttleRestController {
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
 	public List<Shuttle> getAll() {
-		return (List<Shuttle>) this.shuttleRepository.findAll();
+		return (List<Shuttle>) this.shuttleService.findAll();
 	}
 
 	/**
@@ -86,7 +81,7 @@ public class ShuttleRestController {
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteAll() {
-		this.shuttleRepository.deleteAll();
+		this.shuttleService.deleteAll();
 	}
 	
 	/**
@@ -98,6 +93,6 @@ public class ShuttleRestController {
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteByID(@RequestParam String id) {
-		this.shuttleRepository.delete(id);;
+		this.shuttleService.delete(id);;
 	}
 }

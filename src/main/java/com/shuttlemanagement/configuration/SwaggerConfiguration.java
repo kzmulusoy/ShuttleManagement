@@ -39,7 +39,7 @@ public class SwaggerConfiguration {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("com.shuttlemanagement.controller"))
 				.paths(PathSelectors.any())
 				.build()
 				.pathMapping("/");

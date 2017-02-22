@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shuttlemanagement.dto.SearchDto;
-import com.shuttlemanagement.repository.ShuttleRepository;
-import com.shuttlemanagement.repository.ShuttleSearchRepository;
+import com.shuttlemanagement.service.ShuttleService;
 
 /**
  * The Class ShuttleController.
@@ -20,13 +19,9 @@ import com.shuttlemanagement.repository.ShuttleSearchRepository;
 @Controller
 public class ShuttleController {
 	
-	/** The shuttle repository. */
+	/** The shuttle service. */
 	@Autowired
-	ShuttleRepository shuttleRepository;
-
-	/** The shuttle search repository. */
-	@Autowired
-	ShuttleSearchRepository shuttleSearchRepository;
+	ShuttleService shuttleService;
 	
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleController.class);
@@ -51,7 +46,7 @@ public class ShuttleController {
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@ModelAttribute SearchDto searchDto, Model model) {
-        model.addAttribute("shuttleList", shuttleSearchRepository.searchShuttles(searchDto));
+        model.addAttribute("shuttleList", shuttleService.searchShuttles(searchDto));
         LOG.info(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
         
         return "home";
