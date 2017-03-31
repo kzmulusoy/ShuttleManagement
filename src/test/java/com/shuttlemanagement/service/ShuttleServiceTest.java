@@ -34,15 +34,14 @@ public class ShuttleServiceTest {
 	 */
 	@Test
 	public void testSave() {
+		//GIVEN
 		Shuttle shuttle = new Shuttle("A", "B", "C", "D", "E", "F", "G", "H", "I", "J");
-
-		// expectation
 		when(shuttleService.save(shuttle)).thenReturn(new Shuttle());
 
-		// Execute the method being tested
+		//WHEN
 		Shuttle shuttleSaved = shuttleService.save(shuttle);
 
-		// verify
+		//THEN
 		assertNotNull(shuttleSaved);
 	}
 

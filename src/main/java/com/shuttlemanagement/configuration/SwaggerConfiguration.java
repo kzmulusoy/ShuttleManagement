@@ -26,9 +26,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = {"com.shuttlemanagement.controller"})
+@ComponentScan(basePackages = { "com.shuttlemanagement.controller" })
 public class SwaggerConfiguration {
-	
+
 	/**
 	 * Api.
 	 *
@@ -36,13 +36,9 @@ public class SwaggerConfiguration {
 	 */
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(apiInfo())
-				.select()
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
 				.apis(RequestHandlerSelectors.basePackage("com.shuttlemanagement.controller"))
-				.paths(PathSelectors.any())
-				.build()
-				.pathMapping("/");
+				.paths(PathSelectors.any()).build().pathMapping("/");
 	}
 
 	/**
@@ -51,11 +47,7 @@ public class SwaggerConfiguration {
 	 * @return the api info
 	 */
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder()
-				.title("Spring REST Service for Shuttle Management")
-				.description("Shuttle Management")
-				.contact("Kazim Ulusoy")
-				.version("2.0")
-				.build();
+		return new ApiInfoBuilder().title("Spring REST Service for Shuttle Management")
+				.description("Shuttle Management").contact("Kazim Ulusoy").version("2.0").build();
 	}
 }

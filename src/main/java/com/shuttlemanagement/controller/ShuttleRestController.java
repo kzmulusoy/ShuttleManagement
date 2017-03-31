@@ -23,6 +23,7 @@ import com.shuttlemanagement.service.ShuttleService;
 
 /**
  * The Class ShuttleRestController.
+ * 
  * @author Kazim Ulusoy
  */
 @RestController
@@ -35,10 +36,12 @@ public class ShuttleRestController {
 
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleRestController.class);
+
 	/**
 	 * Search.
 	 *
-	 * @param searchDto the search dto
+	 * @param searchDto
+	 *            the search dto
 	 * @return the collection
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -52,7 +55,8 @@ public class ShuttleRestController {
 	/**
 	 * Search.
 	 *
-	 * @param shuttle the shuttle
+	 * @param shuttle
+	 *            the shuttle
 	 * @return the shuttle
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -83,16 +87,18 @@ public class ShuttleRestController {
 	public void deleteAll() {
 		this.shuttleService.deleteAll();
 	}
-	
+
 	/**
 	 * Delete by ID.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 */
 	@RequestMapping(value = "/remove", method = RequestMethod.DELETE)
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteByID(@RequestParam String id) {
-		this.shuttleService.delete(id);;
+		this.shuttleService.delete(id);
+		;
 	}
 }

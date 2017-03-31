@@ -6,46 +6,47 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Shuttle is sample data to save model 
+ * Shuttle is sample data to save model
+ * 
  * @author Kazim Ulusoy
  */
 @Document(collection = "shuttles")
-public class Shuttle implements Serializable{
-	
+public class Shuttle implements Serializable {
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The id. */
 	@Id
 	private String id;
-	
+
 	/** The location. */
 	private String location;
-	
+
 	/** The operation mode is mode for normal or turn of work. */
 	private String operationMode;
-	
+
 	/** The shuttle number. */
 	private String shuttleNumber;
-	
+
 	/** The shuttle name. */
 	private String shuttleName;
-	
+
 	/** The route description. */
 	private String routeDescription;
-	
+
 	/** The driver full name. */
 	private String driverFullName;
-	
+
 	/** The driver phone. */
 	private String driverPhone;
-	
+
 	/** The vehicle plate. */
 	private String vehiclePlate;
-	
+
 	/** The seatingCapacity. */
 	private String seatingCapacity;
-	
+
 	/** The working hour. */
 	private String workingHour;
 
@@ -55,20 +56,30 @@ public class Shuttle implements Serializable{
 	public Shuttle() {
 		super();
 	}
-	
+
 	/**
 	 * Instantiates a new shuttle.
 	 *
-	 * @param location the location
-	 * @param operationMode the operation mode
-	 * @param shuttleNumber the shuttle number
-	 * @param shuttleName the shuttle name
-	 * @param routeDescription the route description
-	 * @param driverFullName the driver full name
-	 * @param driverPhone the driver phone
-	 * @param vehiclePlate the vehicle plate
-	 * @param seatingCapacity the seating capacity
-	 * @param workingHour the working hour
+	 * @param location
+	 *            the location
+	 * @param operationMode
+	 *            the operation mode
+	 * @param shuttleNumber
+	 *            the shuttle number
+	 * @param shuttleName
+	 *            the shuttle name
+	 * @param routeDescription
+	 *            the route description
+	 * @param driverFullName
+	 *            the driver full name
+	 * @param driverPhone
+	 *            the driver phone
+	 * @param vehiclePlate
+	 *            the vehicle plate
+	 * @param seatingCapacity
+	 *            the seating capacity
+	 * @param workingHour
+	 *            the working hour
 	 */
 	public Shuttle(String location, String operationMode, String shuttleNumber, String shuttleName,
 			String routeDescription, String driverFullName, String driverPhone, String vehiclePlate,
@@ -107,7 +118,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the location.
 	 *
-	 * @param location the new location
+	 * @param location
+	 *            the new location
 	 */
 	public void setLocation(String location) {
 		this.location = location;
@@ -125,7 +137,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the operation mode.
 	 *
-	 * @param operationMode the new operation mode
+	 * @param operationMode
+	 *            the new operation mode
 	 */
 	public void setOperationMode(String operationMode) {
 		this.operationMode = operationMode;
@@ -143,7 +156,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the shuttle number.
 	 *
-	 * @param shuttleNumber the new shuttle number
+	 * @param shuttleNumber
+	 *            the new shuttle number
 	 */
 	public void setShuttleNumber(String shuttleNumber) {
 		this.shuttleNumber = shuttleNumber;
@@ -161,7 +175,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the shuttle name.
 	 *
-	 * @param shuttleName the new shuttle name
+	 * @param shuttleName
+	 *            the new shuttle name
 	 */
 	public void setShuttleName(String shuttleName) {
 		this.shuttleName = shuttleName;
@@ -179,7 +194,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the route description.
 	 *
-	 * @param routeDescription the new route description
+	 * @param routeDescription
+	 *            the new route description
 	 */
 	public void setRouteDescription(String routeDescription) {
 		this.routeDescription = routeDescription;
@@ -197,7 +213,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the driver full name.
 	 *
-	 * @param driverFullName the new driver full name
+	 * @param driverFullName
+	 *            the new driver full name
 	 */
 	public void setDriverFullName(String driverFullName) {
 		this.driverFullName = driverFullName;
@@ -215,7 +232,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the driver phone.
 	 *
-	 * @param driverPhone the new driver phone
+	 * @param driverPhone
+	 *            the new driver phone
 	 */
 	public void setDriverPhone(String driverPhone) {
 		this.driverPhone = driverPhone;
@@ -233,7 +251,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the vehicle plate.
 	 *
-	 * @param vehiclePlate the new vehicle plate
+	 * @param vehiclePlate
+	 *            the new vehicle plate
 	 */
 	public void setVehiclePlate(String vehiclePlate) {
 		this.vehiclePlate = vehiclePlate;
@@ -251,7 +270,8 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the seating capacity.
 	 *
-	 * @param seatingCapacity the new seating capacity
+	 * @param seatingCapacity
+	 *            the new seating capacity
 	 */
 	public void setSeatingCapacity(String seatingCapacity) {
 		this.seatingCapacity = seatingCapacity;
@@ -269,13 +289,16 @@ public class Shuttle implements Serializable{
 	/**
 	 * Sets the working hour.
 	 *
-	 * @param workingHour the new working hour
+	 * @param workingHour
+	 *            the new working hour
 	 */
 	public void setWorkingHour(String workingHour) {
 		this.workingHour = workingHour;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -285,6 +308,5 @@ public class Shuttle implements Serializable{
 				+ ", driverFullName=" + driverFullName + ", driverPhone=" + driverPhone + ", vehiclePlate="
 				+ vehiclePlate + ", seatingCapacity=" + seatingCapacity + ", workingHour=" + workingHour + "]";
 	}
-	
-	
+
 }

@@ -14,42 +14,46 @@ import com.shuttlemanagement.service.ShuttleService;
 
 /**
  * The Class ShuttleController.
+ * 
  * @author Kazim Ulusoy
  */
 @Controller
 public class ShuttleController {
-	
+
 	/** The shuttle service. */
 	@Autowired
 	ShuttleService shuttleService;
-	
+
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleController.class);
-	
+
 	/**
 	 * Home.
 	 *
-	 * @param model the model
+	 * @param model
+	 *            the model
 	 * @return the string
 	 */
-	@RequestMapping(value = {"/home", "/"})
-    public String home(Model model) {
-        return "home";
-    }
-	
+	@RequestMapping(value = { "/home", "/" })
+	public String home(Model model) {
+		return "home";
+	}
+
 	/**
 	 * Search.
 	 *
-	 * @param searchDto the search dto
-	 * @param model the model
+	 * @param searchDto
+	 *            the search dto
+	 * @param model
+	 *            the model
 	 * @return the string
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String search(@ModelAttribute SearchDto searchDto, Model model) {
-        model.addAttribute("shuttleList", shuttleService.searchShuttles(searchDto));
-        LOG.info(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
-        
-        return "home";
-    }
+	public String search(@ModelAttribute SearchDto searchDto, Model model) {
+		model.addAttribute("shuttleList", shuttleService.searchShuttles(searchDto));
+		LOG.info(searchDto.getLocation() + searchDto.getOprmode() + searchDto.getDestination());
+
+		return "home";
+	}
 
 }

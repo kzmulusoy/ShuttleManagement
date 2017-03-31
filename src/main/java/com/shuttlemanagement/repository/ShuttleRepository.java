@@ -7,9 +7,10 @@ import com.shuttlemanagement.domain.Shuttle;
 
 /**
  * The Interface ShuttleRepository.
+ * 
  * @author Kazim Ulusoy
  */
-@RestResource(path="shuttles", rel="shuttles")
-public interface ShuttleRepository extends MongoRepository<Shuttle, String>{
-	
+@RestResource(path = "shuttles", rel = "shuttles")
+public interface ShuttleRepository extends MongoRepository<Shuttle, String> {
+
 }

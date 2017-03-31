@@ -18,29 +18,31 @@ import com.shuttlemanagement.repository.ShuttleSearchRepository;
  */
 @Service
 public class ShuttleService {
-	
+
 	/** The shuttle repository. */
 	@Autowired
 	ShuttleRepository shuttleRepository;
-	
+
 	/** The shuttle search repository. */
 	@Autowired
 	ShuttleSearchRepository shuttleSearchRepository;
-	
+
 	/**
 	 * Search shuttles.
 	 *
-	 * @param searchDto the search dto
+	 * @param searchDto
+	 *            the search dto
 	 * @return the collection
 	 */
 	public Collection<Shuttle> searchShuttles(SearchDto searchDto) {
 		return this.shuttleSearchRepository.searchShuttles(searchDto);
 	}
-	
+
 	/**
 	 * Save.
 	 *
-	 * @param shuttle the shuttle
+	 * @param shuttle
+	 *            the shuttle
 	 * @return the shuttle
 	 */
 	public Shuttle save(Shuttle shuttle) {
@@ -66,11 +68,12 @@ public class ShuttleService {
 	/**
 	 * Delete.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 */
 	public void delete(String id) {
 		this.shuttleRepository.delete(id);
-		
+
 	}
 
 }

@@ -13,25 +13,28 @@ import com.shuttlemanagement.dto.SearchDto;
 
 /**
  * The Class ShuttleSearchRepository.
+ * 
  * @author Kazim Ulusoy
  */
 @Repository
 public class ShuttleSearchRepository {
-	
+
 	/** The mongo template. */
 	@Autowired
 	MongoTemplate mongoTemplate;
-	
+
 	/**
 	 * Search shuttles.
 	 *
-	 * @param searchDto the search dto
+	 * @param searchDto
+	 *            the search dto
 	 * @return the collection
 	 */
 	public Collection<Shuttle> searchShuttles(SearchDto searchDto) {
-		return (Collection<Shuttle>) mongoTemplate.find(Query.query(new Criteria().andOperator(
-				Criteria.where("location").regex(searchDto.getLocation(), "i"),
-				Criteria.where("operationMode").regex(searchDto.getOprmode(), "i"),
-				Criteria.where("routeDescription").regex(searchDto.getDestination(), "i"))), Shuttle.class);
+		return (Collection<Shuttle>) mongoTemplate.find(
+				Query.query(new Criteria().andOperator(Criteria.where("location").regex(searchDto.getLocation(), "i"),
+						Criteria.where("operationMode").regex(searchDto.getOprmode(), "i"),
+						Criteria.where("routeDescription").regex(searchDto.getDestination(), "i"))),
+				Shuttle.class);
 	}
 }

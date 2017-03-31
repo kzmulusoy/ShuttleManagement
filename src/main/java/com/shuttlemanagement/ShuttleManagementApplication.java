@@ -6,16 +6,18 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * The Class ShuttleManagementApplication.
+ * 
  * @author Kazim Ulusoy
  */
-@ComponentScan(basePackages="com.shuttlemanagement")
+@ComponentScan(basePackages = "com.shuttlemanagement")
 @SpringBootApplication
 public class ShuttleManagementApplication {
 
 	/**
 	 * The main method.
 	 *
-	 * @param args the arguments
+	 * @param args
+	 *            the arguments
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(ShuttleManagementApplication.class, args);
