@@ -33,7 +33,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile("org.springframework.boot:spring-boot-devtools")
+	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.webjars:bootstrap:3.3.7')
 	compile('org.slf4j:slf4j-api:1.7.22')
 	compile('io.springfox:springfox-swagger2:2.4.0')
