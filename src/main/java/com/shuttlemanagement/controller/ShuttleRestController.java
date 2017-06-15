@@ -1,6 +1,5 @@
 package com.shuttlemanagement.controller;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
