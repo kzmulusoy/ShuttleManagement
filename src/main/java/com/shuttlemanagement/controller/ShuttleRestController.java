@@ -47,9 +47,9 @@ public class ShuttleRestController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
-	public Collection<Shuttle> search(@RequestBody SearchDto searchDto) {
+	public List<Shuttle> search(@RequestBody SearchDto searchDto) {
 		SearchDto requestDto = searchDto;
-		return this.shuttleService.searchShuttles(requestDto);
+		return (List<Shuttle>) this.shuttleService.searchShuttles(requestDto);
 	}
 
 	/**

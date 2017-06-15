@@ -1,7 +1,6 @@
 package com.shuttlemanagement.configuration;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -26,7 +25,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = { "com.shuttlemanagement.controller" })
 public class SwaggerConfiguration {
 
 	/**
@@ -36,9 +34,12 @@ public class SwaggerConfiguration {
 	 */
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.shuttlemanagement.controller"))
-				.paths(PathSelectors.any()).build().pathMapping("/");
+				.paths(PathSelectors.ant("/api/v1/shuttlemanagement/resources/shuttle/*"))
+				.build()
+				.apiInfo(apiInfo());
 	}
 
 	/**
@@ -47,7 +48,12 @@ public class SwaggerConfiguration {
 	 * @return the api info
 	 */
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Spring REST Service for Shuttle Management")
-				.description("Shuttle Management").contact("Kazim Ulusoy").version("2.0").build();
+		return new ApiInfoBuilder()
+				.title("Shuttle Management API")
+				.description("Shuttle Management")
+				.version("1.0")
+				.license("Apache 2.0")
+				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+				.build();
 	}
 }
