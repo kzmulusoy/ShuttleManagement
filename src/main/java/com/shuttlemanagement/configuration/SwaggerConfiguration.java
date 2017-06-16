@@ -17,8 +17,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * this project.<br>
  * The swagger documentation is available here:
  * <ul>
- * <li>http://localhost:8181/v2/api-docs
- * <li>http://localhost:8181/swagger-ui.html
+ *		<li>http://localhost:8181/v2/api-docs
+ * 		<li>http://localhost:8181/swagger-ui.html
  * </ul>
  *
  * @author Kazim Ulusoy
