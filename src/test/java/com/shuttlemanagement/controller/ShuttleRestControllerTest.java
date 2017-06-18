@@ -6,9 +6,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +24,11 @@ import java.io.IOException;
 
 import com.shuttlemanagement.ShuttleManagementApplication;
 
+/**
+ * Test class for ShuttleManagementRestController.
+ * @author Kazim Ulusoy
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ShuttleManagementApplication.class)
 @WebAppConfiguration
@@ -33,8 +36,9 @@ public class ShuttleRestControllerTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleRestControllerTest.class);
 	
-	@Value("${swagger.json.download.path}")
-	private String path;
+	private static final String swaggerJson = "swagger.json";
+	private static final String userHome = "user.home";
+	private static final String url = "/v2/api-docs.json";
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -48,7 +52,7 @@ public class ShuttleRestControllerTest {
     
     @Test
     public void testGetSwaggerJsonMessage() throws Exception {
-    	final String url = "/v2/api-docs.json";
+    	
     	final MockHttpServletRequestBuilder getRequestBuilder = MockMvcRequestBuilders.get(url);
     	
     	MvcResult result = mockMvc.perform(getRequestBuilder).andExpect(status().isOk()).andReturn();
@@ -58,9 +62,10 @@ public class ShuttleRestControllerTest {
     private void saveJsonFile(String content) {
     	FileOutputStream fileOutputStream = null;
 		File file;
-    	try {
-
-			file = new File(path + "swagger.json");
+    	
+		try {
+			String userHomeFolder = System.getProperty(userHome);
+			file = new File(userHomeFolder, swaggerJson);
 			fileOutputStream = new FileOutputStream(file);
 
 			// if file doesnt exists, then create it
@@ -75,7 +80,7 @@ public class ShuttleRestControllerTest {
 			fileOutputStream.flush();
 			fileOutputStream.close();
 
-			System.out.println("Done");
+			LOG.info("swagger.json created under: " + userHomeFolder);
 
 		} catch (IOException e) {
 			LOG.error(e.getMessage());
