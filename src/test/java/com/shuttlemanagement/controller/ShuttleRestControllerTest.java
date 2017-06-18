@@ -6,7 +6,9 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,6 +20,9 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.shuttlemanagement.ShuttleManagementApplication;
 
@@ -27,6 +32,9 @@ import com.shuttlemanagement.ShuttleManagementApplication;
 public class ShuttleRestControllerTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleRestControllerTest.class);
+	
+	@Value("${json.path}")
+	private String path;
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -44,6 +52,41 @@ public class ShuttleRestControllerTest {
     	final MockHttpServletRequestBuilder getRequestBuilder = MockMvcRequestBuilders.get(url);
     	
     	MvcResult result = mockMvc.perform(getRequestBuilder).andExpect(status().isOk()).andReturn();
-    	String content = result.getResponse().getContentAsString();
+    	saveJsonFile(result.getResponse().getContentAsString());
+    }
+    
+    private void saveJsonFile(String content) {
+    	FileOutputStream fileOutputStream = null;
+		File file;
+    	try {
+
+			file = new File(path + "swagger.json");
+			fileOutputStream = new FileOutputStream(file);
+
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			// get the content in bytes
+			byte[] contentInBytes = content.getBytes();
+
+			fileOutputStream.write(contentInBytes);
+			fileOutputStream.flush();
+			fileOutputStream.close();
+
+			System.out.println("Done");
+
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+		} finally {
+			try {
+				if (fileOutputStream != null) {
+					fileOutputStream.close();
+				}
+			} catch (IOException e) {
+				LOG.error(e.getMessage());
+			}
+		}
     }
 }
