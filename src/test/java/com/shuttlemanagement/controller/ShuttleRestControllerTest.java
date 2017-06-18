@@ -33,7 +33,7 @@ public class ShuttleRestControllerTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ShuttleRestControllerTest.class);
 	
-	@Value("${json.path}")
+	@Value("${swagger.json.download.path}")
 	private String path;
 	
 	@Autowired
