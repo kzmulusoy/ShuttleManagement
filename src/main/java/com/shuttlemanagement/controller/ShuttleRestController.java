@@ -61,7 +61,7 @@ public class ShuttleRestController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseStatus(HttpStatus.OK)
-	public Shuttle search(@RequestBody Shuttle shuttle) {
+	public Shuttle save(@RequestBody Shuttle shuttle) {
 		return this.shuttleService.save(shuttle);
 	}
 
